@@ -21,11 +21,10 @@ import {
 } from '@/components/ui/card';
 import { PhoneCall, Mail, MapPin, Instagram, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
-import { sendEmail } from '@/app/actions/send-email';
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState<string | null>(null); // To display feedback message
+  const [message, setMessage] = useState<string | null>(null);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,24 +32,29 @@ const ContactForm = () => {
   const [service, setService] = useState('');
   const [messageText, setMessageText] = useState('');
 
-  // Handle form submission
   async function handleSubmit(event: React.FormEvent) {
-    event.preventDefault(); // Prevent default form submit
+    event.preventDefault();
 
-    const formData = new FormData(event.target as HTMLFormElement);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const messageText = formData.get('message') as string;
-    const phone = formData.get('phone') as string;
-    const service = formData.get('service') as string;
-
-    setIsSubmitting(true); // Start submission
+    setIsSubmitting(true);
 
     try {
-      // Call the server-side action
-      const result = await sendEmail(name, email, phone, service, messageText);
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          service,
+          message: messageText,
+        }),
+      });
 
-      if (result.success) {
+      const data = await response.json();
+
+      if (data.success) {
         setMessage('Email sent successfully!');
         setName('');
         setEmail('');
@@ -58,7 +62,7 @@ const ContactForm = () => {
         setService('');
         setMessageText('');
       } else {
-        setMessage(`Error: ${result.error}`);
+        setMessage(`Error: ${data.error}`);
       }
     } catch (error) {
       setMessage('Something went wrong. Please try again later.');
@@ -296,8 +300,7 @@ const ContactForm = () => {
             </Card>
           </div>
         </div>
-        {message && <p className="text-center mt-4 text-xl">{message}</p>}{' '}
-        {/* Feedback message */}
+        {message && <p className="text-center mt-4 text-xl">{message}</p>}
       </div>
     </section>
   );
