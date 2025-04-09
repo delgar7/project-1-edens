@@ -58,7 +58,7 @@ const Gallery = () => {
     <section className="py-16 md:py-24">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ons Werk</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mijn Werk</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Bekijk het verschil dat professionele autodetailing kan maken. Sleep
             de slider om het voor en na resultaat te zien.
