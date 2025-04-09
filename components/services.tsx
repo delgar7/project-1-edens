@@ -22,7 +22,7 @@ const mainServices = [
       'Binnenzijde ramen reinigen',
       'Lichte vlekken verwijderen',
     ],
-    image: '/images/DSC_0389.JPEG',
+    image: '/images/DSC_0438.JPEG',
     icon: SprayCan,
     bookingUrl:
       'https://edensautodetailing.zohobookings.eu/#/edensautodetailing',
@@ -40,7 +40,7 @@ const mainServices = [
       'Meest complete behandeling',
       'Rij weer met een geweldig gevoel in uw auto!',
     ],
-    image: '/images/DSC_0198.JPEG',
+    image: '/images/DSC_0142.JPEG',
     icon: Shield,
     bookingUrl:
       'https://edensautodetailing.zohobookings.eu/#/edensautodetailing',
@@ -62,8 +62,7 @@ const mainServices = [
       'Banden glans',
       '3 maanden lakbescherming',
     ],
-    image:
-      'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    image: '/images/DSC_0198.JPEG',
     icon: Car,
     bookingUrl:
       'https://edensautodetailing.zohobookings.eu/#/edensautodetailing',
