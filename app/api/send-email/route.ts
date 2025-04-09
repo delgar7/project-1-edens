@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
     const response = await resend.emails.send({
       from: "Eden's Auto Detailing <info@edensautodetailing.nl>",
-      to: 'delanogarciaillera@gmail.com',
+      to: 'info@edensautodetailing.nl',
       subject: `Nieuw contactformulier van ${name}`,
       html: `
         <p><strong>Naam:</strong> ${name}</p>
