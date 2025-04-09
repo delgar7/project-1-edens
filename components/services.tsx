@@ -34,15 +34,11 @@ const mainServices = [
     price: '€119,95',
     originalPrice: '€129,90',
     features: [
-      'Alle interieur behandelingen hierboven',
-      'Alle exterieur behandelingen hieronder',
-      'GRATIS velgen coating (t.w.v. €25)',
-      'GRATIS premium wax (t.w.v. €40)',
-      'Extra lange bescherming',
-      'Voorrang bij het inplannen',
-      'Binnen 24 uur klaar',
-      'Premium service & garantie',
+      'Korting op combideal!',
+      'Alles van Interieur Reiniging',
+      'Alles van Exterieur Reiniging',
       'Meest complete behandeling',
+      'Rij weer met een geweldig gevoel in uw auto!',
     ],
     image: '/images/DSC_0198.JPEG',
     icon: Shield,
@@ -95,11 +91,11 @@ const premiumServices = [
 const extraServices = [
   {
     title: 'Leer Voeden',
-    price: 'vanaf €20',
+    price: 'vanaf €30',
   },
   {
     title: 'Langdurige Waxlaag',
-    price: 'vanaf €40',
+    price: 'vanaf €50',
   },
   {
     title: 'Hardnekkige Vlekken',
@@ -107,7 +103,7 @@ const extraServices = [
   },
   {
     title: 'Motorruimte Reinigen',
-    price: '€15',
+    price: '€40',
   },
   {
     title: 'Hondenharen Verwijderen',
@@ -151,13 +147,6 @@ const Services = () => {
                   : 'hover:scale-[1.02]'
               }`}
             >
-              {service.popular && (
-                <div className="absolute top-0 right-0 w-40 h-40 overflow-hidden">
-                  <div className="absolute top-[30px] right-[-35px] bg-primary text-white px-12 py-1.5 rotate-45 text-sm font-bold shadow-lg">
-                    Meest Gekozen
-                  </div>
-                </div>
-              )}
               <div className="relative h-48">
                 <Image
                   src={service.image}
@@ -169,7 +158,9 @@ const Services = () => {
                 <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                   <div className="flex items-center gap-3 mb-2">
                     <div
-                      className={`p-2 rounded-full ${service.popular ? 'bg-primary' : 'bg-white/20'}`}
+                      className={`p-2 rounded-full ${
+                        service.popular ? 'bg-primary' : 'bg-white/20'
+                      }`}
                     >
                       <service.icon className="h-5 w-5" />
                     </div>
@@ -219,21 +210,35 @@ const Services = () => {
                 </div>
 
                 <div className="flex-1">
-                  <p className="font-medium mb-3">Inbegrepen services:</p>
-                  <ul className="grid gap-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <div
-                          className={`rounded-full p-1 mt-0.5 ${service.popular ? 'bg-primary/10' : 'bg-secondary'}`}
-                        >
-                          <Check
-                            className={`h-3 w-3 ${service.popular ? 'text-primary' : 'text-secondary-foreground'}`}
-                          />
-                        </div>
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div
+                    className={`${service.popular ? 'bg-primary/5 rounded-lg p-4 border border-primary/10' : ''}`}
+                  >
+                    {!service.popular && (
+                      <p className="font-medium mb-3">Inbegrepen services:</p>
+                    )}
+                    <ul
+                      className={`grid gap-2 ${service.popular ? 'space-y-3' : ''}`}
+                    >
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <div
+                            className={`rounded-full p-1 ${service.popular ? 'bg-primary/10' : 'bg-secondary'} ${!service.popular ? 'mt-0.5' : ''}`}
+                          >
+                            <Check
+                              className={`h-3 w-3 ${service.popular ? 'text-primary' : 'text-secondary-foreground'}`}
+                            />
+                          </div>
+                          <span
+                            className={
+                              service.popular ? 'font-medium' : 'text-sm'
+                            }
+                          >
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </CardContent>
             </Card>
