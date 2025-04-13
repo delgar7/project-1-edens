@@ -3,7 +3,17 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Car, SprayCan, Shield, Sparkles, Check, Info } from 'lucide-react';
+import {
+  Car,
+  SprayCan,
+  Shield,
+  Sparkles,
+  Check,
+  Info,
+  CarFront,
+  Truck,
+  Sun as Suv,
+} from 'lucide-react';
 import Link from 'next/link';
 
 const mainServices = [
@@ -79,7 +89,7 @@ const premiumServices = [
     contactLink: true,
   },
   {
-    title: 'Glas Coating',
+    title: 'Glascoating',
     description: 'Langdurige bescherming met premium keramische coating',
     price: 'Op aanvraag',
     icon: Shield,
@@ -110,6 +120,27 @@ const extraServices = [
   },
 ];
 
+const vehicleSizes = [
+  {
+    type: "Middelgrote auto's",
+    examples: 'Mercedes A-Klasse, Audi A3, BMW 1-serie',
+    price: '+€10',
+    icon: Car,
+  },
+  {
+    type: "Grote SUV's / Luxe auto's",
+    examples: 'Mercedes G-Wagon, BMW X5, Porsche Cayenne',
+    price: '+€20',
+    icon: CarFront,
+  },
+  {
+    type: 'Bestelwagens / Campers',
+    examples: 'Mercedes Vito, Ford Transit, VW Transporter',
+    price: '+€30',
+    icon: Truck,
+  },
+];
+
 const Services = () => {
   return (
     <section id="diensten" className="py-16 md:py-24 bg-muted">
@@ -121,22 +152,8 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Pricing Notice */}
-        <div className="mb-8 bg-card/50 border rounded-lg p-4">
-          <div className="flex items-start gap-3">
-            <Info className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-1" />
-            <p className="text-sm text-muted-foreground">
-              De onderstaande prijzen zijn gebaseerd op een voertuig met normale
-              vervuiling. Omdat elk voertuig anders is, kan de uiteindelijke
-              prijs variëren afhankelijk van de vervuilingsgraad. Voor afspraken
-              buiten Amsterdam-West rekenen wij een voorrijkost van €0,30 per
-              kilometer.
-            </p>
-          </div>
-        </div>
-
         {/* Main Services */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {mainServices.map((service, index) => (
             <Card
               key={index}
@@ -210,21 +227,33 @@ const Services = () => {
 
                 <div className="flex-1">
                   <div
-                    className={`${service.popular ? 'bg-primary/5 rounded-lg p-4 border border-primary/10' : ''}`}
+                    className={`${
+                      service.popular
+                        ? 'bg-primary/5 rounded-lg p-4 border border-primary/10'
+                        : ''
+                    }`}
                   >
                     {!service.popular && (
                       <p className="font-medium mb-3">Inbegrepen services:</p>
                     )}
                     <ul
-                      className={`grid gap-2 ${service.popular ? 'space-y-3' : ''}`}
+                      className={`grid gap-2 ${
+                        service.popular ? 'space-y-3' : ''
+                      }`}
                     >
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <div
-                            className={`rounded-full p-1 ${service.popular ? 'bg-primary/10' : 'bg-secondary'} ${!service.popular ? 'mt-0.5' : ''}`}
+                            className={`rounded-full p-1 ${
+                              service.popular ? 'bg-primary/10' : 'bg-secondary'
+                            } ${!service.popular ? 'mt-0.5' : ''}`}
                           >
                             <Check
-                              className={`h-3 w-3 ${service.popular ? 'text-primary' : 'text-secondary-foreground'}`}
+                              className={`h-3 w-3 ${
+                                service.popular
+                                  ? 'text-primary'
+                                  : 'text-secondary-foreground'
+                              }`}
                             />
                           </div>
                           <span
@@ -244,6 +273,46 @@ const Services = () => {
           ))}
         </div>
 
+        {/* Vehicle Size Notice */}
+        <div className="mb-16 bg-card/50 border rounded-lg p-6">
+          <div className="space-y-6">
+            <div className="flex items-start gap-3">
+              <Info className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-1" />
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground/95">
+                  De bovenstaande prijzen zijn gebaseerd op een voertuig met
+                  normale vervuiling. Omdat elk voertuig anders is, kan de
+                  uiteindelijke prijs variëren afhankelijk van de
+                  vervuilingsgraad. Voor afspraken buiten Amsterdam-West rekenen
+                  wij een voorrijkost van €0,30 per kilometer.
+                </p>
+                <div className="border-t pt-4">
+                  <p className="text-sm font-medium mb-3">
+                    Toeslag per voertuigtype:
+                  </p>
+                  <div className="grid gap-2">
+                    {vehicleSizes.map((vehicle, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 text-sm"
+                      >
+                        <vehicle.icon className="h-4 w-4 text-primary/70" />
+                        <span className="font-medium">{vehicle.price}</span>
+                        <span className="text-muted-foreground">
+                          {vehicle.type}{' '}
+                          <span className="text-muted-foreground/70">
+                            ({vehicle.examples})
+                          </span>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Premium Services */}
         <div className="bg-card rounded-lg p-8 shadow-lg mb-12">
           <h3 className="text-2xl font-bold mb-6">Premium Diensten</h3>
@@ -255,11 +324,15 @@ const Services = () => {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-lg mb-1">{service.title}</h4>
-                  <p className="text-muted-foreground mb-2">
+                  <p className="text-muted-foreground/95 mb-2">
                     {service.description}
                   </p>
                   <p className="font-medium mb-3">{service.price}</p>
-                  <Button asChild variant="outline">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="bg-zinc-100 border-zinc-300"
+                  >
                     <Link href="/#contact">Vraag Offerte Aan</Link>
                   </Button>
                 </div>
@@ -271,7 +344,7 @@ const Services = () => {
         {/* Extra Services */}
         <div className="bg-card rounded-lg p-8 shadow-lg">
           <h3 className="text-2xl font-bold mb-6">Extra Opties</h3>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground/95 mb-6">
             Deze extra services kunt u selecteren tijdens het boeken van een
             hoofdbehandeling:
           </p>
