@@ -32,7 +32,7 @@ const faqItems = [
       'Voor optimale resultaten raden we aan om uw auto elke 3-4 maanden te laten detailen. Als u een glascoating heeft laten aanbrengen, kan dit interval worden verlengd tot 6-12 maanden, afhankelijk van de gebruiksomstandigheden en hoe goed u de auto onderhoudt.',
   },
   {
-    question: 'Waarom polijsten en glas coaten?',
+    question: 'Waarom polijsten en glascoaten?',
     answer:
       'Polijsten verwijdert krassen en oxidatie, waardoor de lak van je auto een diepe glans en frissere kleur krijgt. Dit verbetert de uitstraling en helpt de lak in topconditie te houden Na het polijsten biedt een glas coating een sterke bescherming tegen vuil, UV-stralen en weersinvloeden. Het creëert een duurzame, waterafstotende laag die de lak beschermt en voorkomt dat deze veroudert of beschadigt. Door deze bescherming blijft de waarde van je voertuig behouden, aangezien de lak langer mooi blijft. Polijsten en glas coaten zijn daarom cruciaal voor het behoud van zowel de esthetiek als de waarde van je auto op de lange termijn.',
   },
