@@ -36,12 +36,12 @@ const Header = () => {
               <img
                 src="/edens-logo.webp"
                 alt="Edens Auto Detailing Logo"
-                className="h-14 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold bg-gradient-to-r from-primary/90 to-primary text-transparent bg-clip-text">
-                Edens
+                Professionele
               </span>
               <span className="text-sm font-medium text-gray-600 tracking-wider">
                 AUTO DETAILING
